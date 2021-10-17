@@ -7,7 +7,6 @@ function getRandomPhrase(arr){
 }
 
 function addHearts(missed, parent){
-    console.log('marge');
     parent.innerHTML = '';
     for (let i = 0; i < (5 - missed); i++){
         var newBlueHeart = document.createElement('IMG');
@@ -40,9 +39,16 @@ function removeSpace(entry) {
     return entry.trim() != '';
 }
 
+function checkWin(n){
+    if (n === 0){
+        winScreen.style.display = 'flex';
+    }
+}
+
 //------Selections & Variables------//
 const startGameBtn = document.querySelector('.btn__reset');
 const endGameBtn = document.querySelector('.btn__end');
+const resetGameBtn = document.querySelector('.btn__win');
 const phrase = document.querySelector('#phrase');
 const phraseUl = document.querySelector('.phrase-ul');
 const phraseLi = document.getElementsByTagName('LI');
@@ -55,6 +61,7 @@ const heart = document.querySelector('.tries');
 const hearts = heart.parentNode;
 var missed = 0;
 const endScreen = document.querySelector('.end');
+const winScreen = document.querySelector('.win');
 
 
 
@@ -76,8 +83,6 @@ const endScreen = document.querySelector('.end');
         }
         const phraseLiLetters = document.querySelectorAll('.letter');
         const revealedLetters = document.querySelectorAll('.show');
-        console.log(phraseLiLetters.length);
-        console.log(revealedLetters.length);
     });
 
 
@@ -90,7 +95,7 @@ const endScreen = document.querySelector('.end');
             clickedKey.style.zIndex = '-100';
             if(phraseLetters.includes(clickedKey.textContent) === true){
                 revealLetter(clickedKey);
-            } else { // user clicked wrong answer
+            } else {
                 missed += 1;
                 addHearts(missed, hearts);
                 if (missed === 5) {
@@ -100,8 +105,11 @@ const endScreen = document.querySelector('.end');
             }
             const phraseLiLetters = document.querySelectorAll('.letter');
             const revealedLetters = document.querySelectorAll('.show');
-            console.log(phraseLiLetters.length);
-            console.log(revealedLetters.length);
+
+            checkWin(phraseLiLetters.length);
+
+
+            //checkWin(phraseLiLetters, revealedLetters.length);
         });
     }
 
@@ -111,5 +119,7 @@ endGameBtn.addEventListener('click', () => {
     window.location.reload();
 });
 
-//------Conditionals------//
+resetGameBtn.addEventListener('click', () => {
+    window.location.reload();
+});
 
