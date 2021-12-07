@@ -11,14 +11,14 @@ function addHearts(missed, parent){
     for (let i = 0; i < (5 - missed); i++){
         var newBlueHeart = document.createElement('IMG');
         newBlueHeart.className = 'blue-heart';
-        newBlueHeart.src = '../images/liveHeart.png';
+        newBlueHeart.src = 'game_show_app_v1.2/images/liveHeart.png';
         parent.appendChild(newBlueHeart);
     }
     for (let i = 0; i<missed; i++){
         var newWhiteHeart = document.createElement('IMG');
         parent.appendChild(newWhiteHeart);
         newWhiteHeart.className = 'white-heart';
-        newWhiteHeart.src = '../images/lostHeart.png';
+        newWhiteHeart.src = 'game_show_app_v1.2/images/liveHeart.png';
     }
     return
 }
