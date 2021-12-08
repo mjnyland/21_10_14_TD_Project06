@@ -18,7 +18,7 @@ function addHearts(missed, parent){
         var newWhiteHeart = document.createElement('IMG');
         parent.appendChild(newWhiteHeart);
         newWhiteHeart.className = 'white-heart';
-        newWhiteHeart.src = 'game_show_app_v1.2/images/liveHeart.png';
+        newWhiteHeart.src = 'game_show_app_v1.2/images/lostHeart.png';
     }
     return
 }
